@@ -4,7 +4,7 @@ const moment = require("moment");
 const Canvas = require("canvas");
 
 //config
-const { token } = require("./config");
+const { token } = require("./config/config");
 const prefix = "tpm";
 
 client.login(token);
@@ -25,25 +25,21 @@ client.on("message", async (msg) => {
 
   let time = moment();
 
+  time = time.format("ddd, hA");
+
   const embed = new Discord.MessageEmbed();
 
-  for (let i = 0; i < 7; i++) {
-    time.add(1, "day");
-    embed.addFields({ name: "Event Date", value: time });
-  }
-
-  const background = await Canvas.loadImage("./billmusk.jpg");
-
-  canvas = Canvas.createCanvas(1000, 600);
-
-  const ctx = canvas.getContext("2d");
-
-  ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-
-  const attachment = new Discord.MessageAttachment(
-    canvas.toBuffer(),
-    "tpm-banner.png"
-  );
+  //   const background = await Canvas.loadImage("./billmusk.jpg");
+  //   canvas = Canvas.createCanvas(1000, 600);
+  //   const ctx = canvas.getContext("2d");
+  //   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+  //   ctx.font = "60px Georgia";
+  //   ctx.fillStyle = "white";
+  //   ctx.fillText(time, 100, 250);
+  //   const attachment = new Discord.MessageAttachment(
+  //     canvas.toBuffer(),
+  //     "tpm-banner.png"
+  //   );
 
   msg.reply(attachment);
 });
