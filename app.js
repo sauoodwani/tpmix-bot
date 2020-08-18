@@ -2,6 +2,11 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 client.cmds = new Discord.Collection();
 
+//config
+const { token } = require("./config/config");
+const connectDB = require("./config/db");
+const prefix = "tpm";
+
 const fs = require("fs");
 fs.readdirSync("./commands").forEach((file) => {
   try {
@@ -13,17 +18,7 @@ fs.readdirSync("./commands").forEach((file) => {
   }
 });
 
-const moment = require("moment");
-const Canvas = require("canvas");
-
-const Event = require("./models/Event");
-
-//config
-const { token } = require("./config/config");
-const connectDB = require("./config/db");
 connectDB();
-const prefix = "tpm";
-
 client.login(token);
 
 client.on("ready", () => {
@@ -33,7 +28,7 @@ client.on("ready", () => {
 client.on("message", async (msg) => {
   if (msg.author.bot) return;
   if (!msg.content.startsWith(prefix)) return;
-  // console.log(msg);
+
   const args = msg.content.slice(prefix.length).split(/ +/);
   args.forEach((elem, index) => {
     if (elem === "") args.splice(index, 1);
