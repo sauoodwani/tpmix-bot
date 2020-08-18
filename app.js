@@ -28,35 +28,38 @@ client.on("message", async (msg) => {
     elem.trim();
   });
 
-  let time = moment();
-
-  // time = time.format("ddd, hA");
-
   const embed = new Discord.MessageEmbed();
-
-  if (args[0] === "create") {
+  const cmd = args.shift();
+  if (cmd === "create") {
     // const time = moment().month(args[0]).date(args[1]);
 
-    msg.author.send("Tell me about your event");
+    msg.channel.send("Tell me about your event");
 
     const collector = new Discord.MessageCollector(
       msg.channel,
-      (m) => m.author.id === msg.author.id,
+      (m) => m.author.id == msg.author.id,
       { time: 10000 }
     );
 
     collector.on("collect", (message) => {
-      console.log(message.content);
+      // console.log(message.content);
+      const args = message.content.split(/ /);
+      try {
+        // console.log(args.slice(1).join(" "));
+        Event.create({
+          title: args.slice(1).join(" "),
+          description: "This is blah blah for now",
+          createBy: message.author.username,
+          startTime: moment().year(2020).month(7).date(args[0]),
+        })
+          .then((res) => console.log(res))
+          .catch((err) => console.error(err));
+      } catch (error) {
+        console.error(error);
+      }
     });
   }
 });
-
-// Event.create({
-//   title: ,
-//   description: ,
-//   createBy: msg.author.username,
-//   startTime: time,
-// })
 
 //   const background = await Canvas.loadImage("./billmusk.jpg");
 //   canvas = Canvas.createCanvas(1000, 600);
