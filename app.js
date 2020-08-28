@@ -2,8 +2,10 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 client.cmds = new Discord.Collection();
 
+const toxicity = require("@tensorflow-models/toxicity");
+
 //config
-const { token } = require("./config/config");
+const { token, threshold } = require("./config/config");
 const connectDB = require("./config/db");
 const prefix = "tpm";
 
@@ -28,6 +30,9 @@ client.on("ready", () => {
 
 client.on("message", async (msg) => {
   if (msg.author.bot) return;
+
+  //TensorFlow toxicity
+
   if (!msg.content.startsWith(prefix)) return;
 
   const args = msg.content.slice(prefix.length).split(/ +/);
