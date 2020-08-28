@@ -4,19 +4,13 @@ const Event = require("../models/Event");
 const Canvas = require("canvas");
 const fs = require("fs");
 
-var images = [];
-
-function loadImages() {
-
-fs.readdirSync("./images/wisdom/").forEach((image, index) => {
-  try {
-    images.push(await Canvas.loadImage(`./images/wisdom/${image}`));
-    console.log(`${image} Loaded`);
-  } catch (error) {
-    console.log(`${image} X didn't load`);
-  }
-
-})
+function getImages() {
+  var images = [];
+  const directory = fs.readdirSync("./images/wisdom");
+  directory.forEach((element) => {
+    images.push(element);
+  });
+  return images;
 }
 
 module.exports = {
@@ -24,16 +18,21 @@ module.exports = {
   usage: "wisdom",
   description: "gives you memes with wisdom",
   run: async ({ client, msg, args }) => {
+    const images = getImages();
+    console.log(images);
     const random = Math.floor(Math.random() * 3);
+    const image = await Canvas.loadImage(`./images/wisdom/${images[random]}`);
     canvas = Canvas.createCanvas(1000, 600);
     const ctx = canvas.getContext("2d");
-    ctx.drawImage(images[random], 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
     ctx.font = "60px Georgia";
     ctx.fillStyle = "white";
-    ctx.fillText(time, 100, 250);
+
     const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
       "tpm-banner.png"
     );
+
+    msg.channel.send(attachment);
   },
 };
