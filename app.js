@@ -15,6 +15,7 @@ fs.readdirSync("./commands").forEach((file) => {
     console.log(`${file} Loaded`);
   } catch (error) {
     console.log(`${file} X didn't load`);
+    console.log(error);
   }
 });
 
