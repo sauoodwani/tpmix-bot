@@ -1,9 +1,9 @@
 require("@tensorflow/tfjs-node");
 const toxicity = require("@tensorflow-models/toxicity");
 // require("@tensorflow/tfjs-backend-wasm");
-const { threshold } = require("./config/config");
+const threshold = 0.8;
 
-const sentence = ["nice man"];
+const sentence = ["this food sucks"];
 console.log(threshold);
 
 toxicity
@@ -11,7 +11,10 @@ toxicity
   .then((model) => {
     model.classify(sentence).then((results) => {
       results.forEach((result) => {
-        console.log(result.results);
+        if (result.label === "toxicity" && result.results[0].match) {
+          console.log("toxic");
+          console.log(result.results[0].probabilities);
+        }
       });
     });
   })
