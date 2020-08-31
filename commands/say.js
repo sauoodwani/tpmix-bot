@@ -3,19 +3,10 @@ const moment = require("moment");
 const Event = require("../models/Event");
 const Canvas = require("canvas");
 
-function getImages() {
-  var images = [
-    "https://i.imgur.com/GOhVdZm.jpg",
-    "https://i.imgur.com/CMplD96.jpg",
-  ];
-
-  return images;
-}
-
 module.exports = {
-  name: "meme",
-  usage: "meme",
-  description: "gives you memes",
+  name: "say",
+  usage: "say <text>",
+  description: "puts your text on a TPM banner",
   run: async ({ client, msg, args }) => {
     const images = getImages();
     console.log(images);
