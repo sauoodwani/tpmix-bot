@@ -7,6 +7,11 @@ function getImages() {
   var images = [
     "https://i.imgur.com/GOhVdZm.jpg",
     "https://i.imgur.com/CMplD96.jpg",
+    "https://i.imgur.com/qu205qE.jpg",
+    "https://i.imgur.com/1D5HnFW.jpg",
+    "https://i.redd.it/a2ewhergumi51.jpg",
+    "https://i.imgur.com/BStkWo8.png",
+    "https://i.redd.it/tgu8jba8hle51.jpg"
   ];
 
   return images;
