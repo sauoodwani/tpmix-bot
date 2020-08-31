@@ -8,15 +8,30 @@ module.exports = {
   usage: "say <text>",
   description: "puts your text on a TPM banner",
   run: async ({ client, msg, args }) => {
-    const images = getImages();
-    console.log(images);
-    const random = Math.floor(Math.random() * images.length);
-    const image = await Canvas.loadImage(`${images[random]}`);
+    let text = args.join(" ");
+    msg.channel.send(text.length);
+
+    if (text.length > 100) {
+      msg.channel.send("Message is too long");
+      return;
+    }
+
+    const image = await Canvas.loadImage("https://i.imgur.com/aNTBLyR.jpg");
     canvas = Canvas.createCanvas(1000, 600);
     const ctx = canvas.getContext("2d");
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
     ctx.font = "60px Georgia";
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "#808080";
+
+    if (text.length > 20) {
+      const text1 = text.split(" ").slice(0, 4);
+      const text2 = text.split(" ").slice(4);
+      ctx.fillText(text1.join(" "), 75, 225);
+      ctx.fillText(text2.join(" "), 200, 400);
+      console.log(text1, text2);
+    } else {
+      ctx.fillText(text, 50, 200);
+    }
 
     const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),

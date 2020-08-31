@@ -29,7 +29,7 @@ module.exports = {
 
     const attachment = new Discord.MessageAttachment(
       canvas.toBuffer(),
-      "tpm-banner.png"
+      "tpm-meme.png"
     );
 
     msg.channel.send(attachment);
