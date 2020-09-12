@@ -5,6 +5,7 @@ const Canvas = require("canvas");
 
 function getImages() {
   var images = [
+	"https://media.discordapp.net/attachments/753660284077604994/753982211635675216/FB_IMG_1599833390577.jpg?width=538&height=667",
     "https://i.imgur.com/GOhVdZm.jpg",
     "https://i.imgur.com/CMplD96.jpg",
     "https://i.imgur.com/qu205qE.jpg",
