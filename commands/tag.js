@@ -7,7 +7,7 @@ module.exports = {
     switch (type.trim()) {
       case "howtocode":
         msg.channel.send(
-          `**HOW TO CODE**\n Jump right into it with <https://www.freecodecamp.com> or <https://www.hackerrank.com>\nWhen you're ready, you can get an IDE (Integrated Development Environment) like Visual Studio Code (<https://code.visualstudio.com/>).\n A little coding everyday goes a long way. Stick with it ! :)`
+          `**HOW TO CODE**\n Jump right into it with <https://www.freecodecamp.com> or <https://www.hackerrank.com>\n If you want to code your own stuff, an good way is https://repl.it/.\n A little coding everyday goes a long way. Stick with it ! :)`
         );
         break;
       case "howtoask":
