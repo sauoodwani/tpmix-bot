@@ -32,7 +32,7 @@ client.on("ready", () => {
   })
 });
 
-bot.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', member => {
   member.guild.channels.get('731531456844660737').send(":welcome2::welcome1:"); 
 });
 
