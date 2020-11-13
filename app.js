@@ -24,9 +24,9 @@ client.login(token);
 
 client.on("ready", () => {
   console.log(`You are ${client.user.tag}!`);
-  client.user.setStatus('online');
   client.user.setPresence({
-    game : {
+    status: "online",
+    activity : {
       name: "Elon is watching."
     }
   })
