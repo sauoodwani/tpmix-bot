@@ -33,7 +33,7 @@ client.on("ready", () => {
 });
 
 client.on('guildMemberAdd', member => {
-  member.guild.channels.get('731531456844660737').send(":welcome2::welcome1:"); 
+  client.channels.get('731531456844660737').send(":welcome2::welcome1:"); 
 });
 
 client.on("message", async (msg) => {
