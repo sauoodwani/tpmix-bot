@@ -1,5 +1,6 @@
 module.exports = () => {
   var images = [
+    "https://cdn.discordapp.com/attachments/704376503454007356/778263283311706112/numbers.png",
     "https://media.tenor.co/videos/ac5bac1f56fbf74541b53244f504925b/mp4",
     "https://cdn.discordapp.com/attachments/753660284077604994/754174836187725935/97af07cd9d0c4fbb8ad660b3ebc56a75-1.png",
     "https://media.discordapp.net/attachments/753660284077604994/753982211635675216/FB_IMG_1599833390577.jpg?width=538&height=667",
