@@ -1,3 +1,4 @@
+const ms = require('ms');
 const Discord = require("discord.js");
 const client = new Discord.Client();
 client.cmds = new Discord.Collection();
@@ -59,3 +60,11 @@ client.on("message", async (msg) => {
     console.error(error);
   }
 });
+
+// Set to 15 minutes to avoid rate limit
+setInterval(() => {
+  let guild = client.guild.cache.get('700053942482239638');
+  let members = guild.memberCount;
+  let channel = guild.channels.cache.get('790925289387458570');
+  channel.setName(`Members: ${members}`).catch(console.error);
+}, ms('15m'));
