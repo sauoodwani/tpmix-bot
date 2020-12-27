@@ -36,13 +36,13 @@ client.on("ready", () => {
 
 client.on('guildMemberAdd', member => {
   client.channels.cache.get('731531456844660737').send(":welcome2: :welcome1:"); 
-  const channel = member.guild.channels.cache.get('790925289387458570');
+  const channel = member.guild.channels.cache.get('790948237074104341');
 	if (!channel) return;
 
 	const canvas = Canvas.createCanvas(700, 250);
 	const ctx = canvas.getContext('2d');
 
-	const background = await Canvas.loadImage('./wallpaper.jpg');
+  const background = await Canvas.loadImage('./background.png');
 	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
 	ctx.strokeStyle = '#74037b';
@@ -67,6 +67,7 @@ client.on('guildMemberAdd', member => {
 	ctx.drawImage(avatar, 25, 25, 200, 200);
 
   const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
+  channel.lastMessage.delete()
   channel.send(attachment);
 });
 
