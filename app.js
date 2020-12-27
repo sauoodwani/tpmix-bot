@@ -36,7 +36,7 @@ client.on("ready", () => {
 
 client.on('guildMemberAdd', member => {
   client.channels.cache.get('731531456844660737').send(":welcome2: :welcome1:"); 
-  const channel = member.guild.channels.cache.get('790948237074104341');
+  const channel = member.guild.channels.cache.get('790925289387458570');
 	if (!channel) return;
 
 	const canvas = Canvas.createCanvas(700, 250);
