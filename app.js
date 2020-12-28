@@ -14,11 +14,7 @@ fs.readdirSync("./commands").forEach((file) => {
   try {
     let cmd = require(`./commands/${file}`);
     client.cmds.set(cmd.name, cmd);
-    console.log(`$
-
-    @sauoodwani
-    When adding packages you can install them with npm i packagename and it will add that to package.json and package-lock.json. Would you be able to add the canvas package?
-    {file} Loaded`);
+    console.log(`${file} Loaded`);
   } catch (error) {
     console.log(`${file} X didn't load`);
     console.log(error);
