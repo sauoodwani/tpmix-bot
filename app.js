@@ -128,7 +128,7 @@ client.on("message", async (msg) => {
 
 // Set to 15 minutes to avoid rate limit
 setInterval(() => {
-  let guild = client.guild.cache.get("700053942482239638");
+  let guild = client.guilds.cache.get("700053942482239638");
   let members = guild.memberCount;
   let channel = guild.channels.cache.get("790948237074104341");
   channel.setName(`Members: ${members}`).catch(console.error);
