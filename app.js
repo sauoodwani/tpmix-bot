@@ -53,46 +53,43 @@ const applyText = (canvas, text) => {
 client.on("guildMemberAdd", async (member) => {
   const channel = member.guild.channels.cache.get("731531456844660737");
   if (!channel) return;
-
+  
   const canvas = Canvas.createCanvas(700, 250);
   const ctx = canvas.getContext("2d");
 
   const background = await Canvas.loadImage("./background.png");
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-  ctx.strokeStyle = "#74037b";
+  ctx.strokeStyle = "#C0C0C0";
   ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
   // Slightly smaller text placed above the member's display name
-  ctx.font = "28px sans-serif";
-  ctx.fillStyle = "#ffffff";
+  ctx.font = "32px Impact";
+  ctx.fillStyle = "#F8F8F8";
   ctx.fillText(
-    `Total Server Members: ${member.guild.memberCount}`,
+    'Total Server Members:',
     canvas.width / 2.5,
-    canvas.height / 3.5
+    canvas.height / 1.9
   );
-
-  // Add an exclamation point here and below
-  // ctx.font = "28px sans-serif";
-  ctx.fillStyle = "#ffffff";
-
-  applyText(canvas, `${member.guild.memberCount}!`);
-
-  ctx.fillText(
-    `${member.displayName}!`,
-    canvas.width / 2.5,
-    canvas.height / 1.8
-  );
-
+    // Add an exclamation point here and below
+    ctx.font = "45px Impact";
+    ctx.fillStyle = "#F8F8F8";
+    ctx.fillText(`${client.guilds.cache.get("700053942482239638").memberCount}`, canvas.width / 2.5, canvas.height / 3.5
+    );
+    ctx.font = '25px Impact';
+    ctx.fillStyle = '#F8F8F8'
+    ct2222.fillText(`Latest Join: ${member.user.username}#${member.user.discriminator}`, canvas.width / 2.45, canvas.height / 1.44);
   ctx.beginPath();
-  ctx.arc(125, 125, 100, 0, Math.PI * 2, true);
+  ctx.arc(125, 125, 0, Math.PI * 2, true);
   ctx.closePath();
   ctx.clip();
-
   const avatar = await Canvas.loadImage(
     member.user.displayAvatarURL({ format: "jpg" })
   );
   ctx.drawImage(avatar, 25, 25, 200, 200);
+
+  // applyText(canvas, `${member.guild.memberCount}!`);
+ 
 
   const attachment = new Discord.MessageAttachment(
     canvas.toBuffer(),
